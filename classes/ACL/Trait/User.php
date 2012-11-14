@@ -43,7 +43,7 @@ trait ACL_Trait_User
 	 * @param array $permissions An array of ACL_Model_Permission or Permission PK-s
 	 * @return bool True if the user had one of the permissions
 	 */
-	public function has_one_of(array $permissions)
+	public function has_any_permission(array $permissions)
 	{
 		foreach ($permissions as $permission) {
 			if ($this->_check_permission($permission)) {
