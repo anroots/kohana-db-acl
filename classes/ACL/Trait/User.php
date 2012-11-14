@@ -6,7 +6,7 @@
  * @since 1.0
  * @author Ando Roots <ando@sqroot.eu>
  */
-trait ACL_User
+trait ACL_Trait_User
 {
 	/**
 	 * Check if the user has the specified permission.

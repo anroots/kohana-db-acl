@@ -5,7 +5,6 @@
  */
 class ACL_Model_Role extends ORM
 {
-
 	// Basic Role constants
 	const LOGIN = 1; // Allow login
 	const ADMIN = 2; // Never-ever give this role to daily system users! Only for developers.
