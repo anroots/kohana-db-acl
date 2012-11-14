@@ -1,7 +1,11 @@
-# Kohana DB ACL
+# Database based Access Control Module for the Kohana Framework
 
 Database-based ACL module for Kohana 3.3 / PHP 5.4. Users get access rights to perform certain actions through their roles.
 Each role can have several permissions. You define new roles and permissions in the database as you see fit.
+
+I actually do recommend against using this module unless you specifically want the role/permission management to happen in
+the database (some projects need permissions managed from the GUI, by the administrative users). For an alternative
+(and much better) implementation, see [https://github.com/vendo/acl](https://github.com/vendo/acl).
 
 # Dependencies
 
@@ -10,20 +14,29 @@ Each role can have several permissions. You define new roles and permissions in 
 3. Default Database, Auth and ORM modules
 
 # Usage
+
 ```php
-// Check current user's permission to edit customers
-$current_user = Auth::instance()->get_user();
-if ($current_user->can(Permission::EDIT_CUSTOMERS)) { /** Do some stuff **/ }
+// ...
+public function save_customer() {
+	$current_user = Auth::instance()->get_user();
+
+	if (!$current_user->can(Permission::EDIT_CUSTOMERS)) {
+		throw new Authorization_Exception('');
+	}
+
+	// Save the Customer ORM model
+	$this->save();
+}
+// ...
 ```
-## Checking permissions
+## Defining permissions
 
-* `$user->can($permission); // Has the permission`
-* `$user->has_permissions(array $permissions); // Has all of the specified permissions`
-* `$user->has_any_permission(array $permission); // Has any of the specified permissions`
+Create new entries in table `permissions` as you develop your application. Associate permissions with roles and
+check for the user's authorization to perform some action in your code.
 
-## Permission constants
+### Permission constants
 
-Override Permission in your `APPPATH` to define permission constants. Constant values correspond to the `id` column of
+Override `Permission` in your `APPPATH` to define permission constants. Constant values correspond to the `id` column of
 the `permissions` table.
 
 ```php
@@ -35,6 +48,13 @@ class Model_Permission extends ACL_Model_Permission {
 
 $user->can(Model_Permission::EDIT_USERS);
 ```
+
+## Checking permissions
+
+* `$user->can($permission); // Has the permission`
+* `$user->has_permissions(array $permissions); // Has all of the specified permissions`
+* `$user->has_any_permission(array $permission); // Has any of the specified permissions`
+
 
 # Installation
 
