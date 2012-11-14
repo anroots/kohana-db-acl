@@ -1,0 +1,20 @@
+{
+	"name"       :"anroots/db-acl",
+	"type"       :"kohana-module",
+	"description":"Database-based ACL module for Kohana 3.3.",
+	"keywords"   :["kohana", "acl", "roles", "permissions", "kohana module"],
+	"homepage"   :"https://github.com/anroots/kohana-db-acl",
+	"license"    :"MIT",
+	"authors"    :[
+		{
+			"name"    :"Ando Roots",
+			"email"   :"ando@sqroot.eu",
+			"homepage":"http://sqroot.eu",
+			"role"    :"Developer"
+		}
+	],
+	"require"    :{
+		"php"                :">=5.4.0",
+		"composer/installers":"*"
+	}
+}

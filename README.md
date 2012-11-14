@@ -1,4 +1,4 @@
-kohana-db-acl
+Kohana DB ACL
 =============
 
-Database-based ACL module for Kohana
+Database-based ACL module for Kohana 3.3.
