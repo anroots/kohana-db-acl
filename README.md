@@ -1,10 +1,10 @@
-# Database based Access Control Module for the Kohana Framework
+# Access Control Module for the Kohana Framework
 
-Database-based ACL module for Kohana 3.3 / PHP 5.4. Users get access rights to perform certain actions through their roles.
+Database-based ACL module for Kohana 3.3 / PHP 5.4. Users get authorization to perform certain actions through their roles.
 Each role can have several permissions. You define new roles and permissions in the database as you see fit.
 
 I actually do recommend against using this module unless you specifically want the role/permission management to happen in
-the database (some projects need permissions managed from the GUI, by the administrative users). For an alternative
+the database (some projects need permissions managed from the GUI, by administrative users). For an alternative
 (and much better) implementation, see [https://github.com/vendo/acl](https://github.com/vendo/acl).
 
 # Dependencies
@@ -21,7 +21,7 @@ public function save_customer() {
 	$current_user = Auth::instance()->get_user();
 
 	if (!$current_user->can(Permission::EDIT_CUSTOMERS)) {
-		throw new Authorization_Exception('');
+		throw new Authorization_Exception();
 	}
 
 	// Save the Customer ORM model
@@ -31,7 +31,7 @@ public function save_customer() {
 ```
 ## Defining permissions
 
-Create new entries in table `permissions` as you develop your application. Associate permissions with roles and
+Create new entries in the `permissions` table as you develop your application. Associate permissions with roles and
 check for the user's authorization to perform some action in your code.
 
 ### Permission constants
