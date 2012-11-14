@@ -8,7 +8,7 @@
 
 CREATE TABLE IF NOT EXISTS `permissions` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) NOT NULL,
+  `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
 
 CREATE TABLE IF NOT EXISTS `roles_permissions` (
   `role_id` int(11) unsigned NOT NULL,
-  `permission_id` tinyint(3) unsigned NOT NULL,
+  `permission_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`role_id`,`permission_id`),
   KEY `fk_roles_permissions_permissions1_idx` (`permission_id`),
   KEY `fk_roles_permissions_roles1_idx` (`role_id`)
