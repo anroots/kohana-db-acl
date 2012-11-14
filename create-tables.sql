@@ -16,20 +16,20 @@ CREATE TABLE IF NOT EXISTS `permissions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles_permissions`
+-- Table structure for table `permissions_roles`
 --
 
-CREATE TABLE IF NOT EXISTS `roles_permissions` (
+CREATE TABLE IF NOT EXISTS `permissions_roles` (
   `role_id` int(11) unsigned NOT NULL,
   `permission_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`role_id`,`permission_id`),
-  KEY `fk_roles_permissions_permissions1_idx` (`permission_id`),
-  KEY `fk_roles_permissions_roles1_idx` (`role_id`)
+  KEY `fk_permissions_roles_permissions1_idx` (`permission_id`),
+  KEY `fk_permissions_roles_roles1_idx` (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Constraints for table `roles_permissions`
+-- Constraints for table `permissions_roles`
 --
-ALTER TABLE `roles_permissions`
-  ADD CONSTRAINT `fk_roles_permissions_permissions1` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_roles_permissions_roles1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `permissions_roles`
+  ADD CONSTRAINT `fk_permissions_roles_permissions1` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_permissions_roles_roles1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

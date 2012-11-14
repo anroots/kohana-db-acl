@@ -1,5 +1,4 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-die('sd');
-class Role extends Model_Role {
+class Model_Role extends ACL_Model_Role {
 
 }

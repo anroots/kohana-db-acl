@@ -3,7 +3,7 @@
  * @since 1.0
  * @author Ando Roots <ando@roots.ee>
  */
-class ACL_Model_Role extends ORM
+class ACL_Model_Role extends Model_Auth_Role
 {
 	// Basic Role constants
 	const LOGIN = 1; // Allow login
@@ -24,12 +24,12 @@ class ACL_Model_Role extends ORM
 	public function can($permission)
 	{
 		if (! $this->loaded()) {
-			return FALSE;
+			return false;
 		}
 
 		// The ADMIN role is all-powerful
 		if ($this->pk() === self::ADMIN) {
-			return TRUE;
+			return true;
 		}
 
 		return $this->has('permissions', $permission);
