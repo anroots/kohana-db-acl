@@ -70,7 +70,6 @@ trait ACL_Trait_User
 
 		// Todo: Do this with one DB::select query
 		foreach ($this->roles->find_all() as $role) {
-//			die(var_dump(get_included_files()));
 			if ($role->can($permission)) {
 				return TRUE;
 			}
