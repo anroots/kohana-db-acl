@@ -28,7 +28,7 @@ class ACL_Model_Role extends Model_Auth_Role
 		}
 
 		// The ADMIN role is all-powerful
-		if ($this->pk() === self::ADMIN) {
+		if ($this->pk() == self::ADMIN) {
 			return true;
 		}
 
