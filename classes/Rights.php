@@ -2,15 +2,15 @@
 
 class Rights {
 
-    private $_permissions = array();
+	private $_permissions = array();
 
-    public static function instance()
-    {
-    	return new Rights();
-    }
+	public static function instance()
+	{
+		return new Rights();
+	}
 
-    public function __construct()
-    {
+	public function __construct()
+	{
 		$permissions = ORM::factory('permission')->find_all()->as_array();
         	
 		foreach ($permissions as $permission) {
@@ -20,12 +20,10 @@ class Rights {
 			
 			$_permissions[UTF8::strtolower($perm_name)] = $perm_id;
 		}
+	}
 
-		echo var_dump($_permissions);
-    }
-
-    public function __get($name) 
-    {
-       	return Arr::get($this->_permissions, $name, 0);
-    }
+	public function __get($name) 
+	{
+		return Arr::get($this->_permissions, $name, 0);
+	}
 }
