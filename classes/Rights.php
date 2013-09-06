@@ -18,7 +18,7 @@ class Rights {
 			$perm_name = Inflector::underscore(Arr::get($perm_array, 'name'));
 			$perm_id = (int) Arr::get($perm_array, 'id',0);
 			
-			$_permissions[UTF8::strtolower($perm_name)] = $perm_id;
+			$this->_permissions[UTF8::strtolower($perm_name)] = $perm_id;
 		}
 	}
 
